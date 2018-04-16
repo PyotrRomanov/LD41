@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Agent : GridObject {
-    public int speed;
+    public int speed { get; private set; }
     TurnController turnController;
     bool myTurn = false;
 

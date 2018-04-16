@@ -7,9 +7,11 @@ public class GridData : MonoBehaviour {
 	const int gridSizeX = 4;
 	const int gridSizeY = 4;
 
-	// Use this for initialization
-	void Start () {
-		Tile[,] tiles = new Tile[gridSizeX, gridSizeY];
+    public Tile[,] tiles { get; private set; }
+
+    // Use this for initialization
+    public GridData () {
+		tiles = new Tile[gridSizeX, gridSizeY];
 		for (int i = 0; i < gridSizeX; i++) {
 			for (int j = 0; j < gridSizeY; j++) {
 				tiles[i, j] = new Tile();
