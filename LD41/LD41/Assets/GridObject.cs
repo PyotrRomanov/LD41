@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class GridObject : MonoBehaviour {
 
-	bool passable;	
+	bool passable;
+	bool targetable;
+	int health;
 
 	// Use this for initialization
 	void Start () {

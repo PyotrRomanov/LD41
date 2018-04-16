@@ -24,7 +24,7 @@ public class GridData : MonoBehaviour {
 }
 
 public class Tile {
-	GridObject inhabitant;
+	GridObject inhabitant = null;
 	bool accessible = true;
 	public void SetInhabitant(GridObject inhabitant) {
 		if (this.inhabitant == null) {
