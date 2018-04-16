@@ -10,7 +10,7 @@ public class TurnController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         agents = FindObjectsOfType<Agent>().ToList();
-        agents.OrderBy(a => a.speed);
+        agents.OrderBy(a => a.turnPriority);
         NextRound();
     }
 	
