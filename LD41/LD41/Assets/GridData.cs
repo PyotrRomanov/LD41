@@ -9,7 +9,12 @@ public class GridData : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Tile[,] tileData = new Tile[gridSizeX, gridSizeY];
+		Tile[,] tiles = new Tile[gridSizeX, gridSizeY];
+		for (int i = 0; i < gridSizeX; i++) {
+			for (int j = 0; j < gridSizeY; j++) {
+				tiles[i, j] = new Tile();
+			}
+		}
 	}
 	
 	// Update is called once per frame
@@ -20,15 +25,29 @@ public class GridData : MonoBehaviour {
 
 public class Tile {
 	GridObject inhabitant;
+	bool accessible = true;
 	public void SetInhabitant(GridObject inhabitant) {
-		this.inhabitant = inhabitant;
+		if (this.inhabitant == null) {
+			this.inhabitant = inhabitant;
+		}
+		else {
+			Debug.LogError("Attempted to set an inhabitant on a tile that already had one!");
+		}
+	}
+	public GridObject GetInhabitant() {
+		return this.inhabitant;
+	}
+	public void RemoveInhabitant() {
+		this.inhabitant = null;
 	}
 
-	public GridObject GetInhabitant() {
-		return inhabitant;
+	public bool GetAccessible() {
+		return this.accessible;
 	}
-	
-	public Tile() {
-	
+	public void SetAccessible(bool accessible) {
+		this.accessible = accessible;
+		if (!accessible && this.inhabitant != null) {
+			Debug.LogError("Made tile accessible while it still had an inhabitant!");
+		}
 	}
 }
