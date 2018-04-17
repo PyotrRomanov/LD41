@@ -11,14 +11,20 @@ public class WorldManager : MonoBehaviour {
 
 	void Start () {
 		GridWorld world1 = new GridWorld(4, 4);
-        GameObject canvas = Instantiate(canvasPf);
+
+        CreateUI();
         
+    }
+
+    void CreateUI() {
+        GameObject canvas = Instantiate(canvasPf);
+
         for (int i = 0; i < buttonCount; i++) {
-            GameObject firstButton = Instantiate(buttonPf);
-            firstButton.transform.SetParent(canvas.transform, false);
-            firstButton.transform.localPosition = new Vector3(-(Screen.width / 2) + (firstButton.GetComponent<RectTransform>().sizeDelta.x / 2) + firstButton.GetComponent<RectTransform>().sizeDelta.x * i, -(Screen.height / 2) + (firstButton.GetComponent<RectTransform>().sizeDelta.y / 2), 0);
-
+            GameObject button = Instantiate(buttonPf);
+            button.transform.SetParent(canvas.transform, false);
+            button.transform.localPosition = new Vector3(-(Screen.width / 2) + (button.GetComponent<RectTransform>().sizeDelta.x / 2)
+                + button.GetComponent<RectTransform>().sizeDelta.x * i
+                , -(Screen.height / 2) + (button.GetComponent<RectTransform>().sizeDelta.y / 2), 0);
         }
-
     }
 }
