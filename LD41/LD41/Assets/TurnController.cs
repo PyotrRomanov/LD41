@@ -7,7 +7,6 @@ public class TurnController : MonoBehaviour {
     List<Agent> agents;
     Queue<Agent> roundQueue;
     int roundNumber;
-    // Use this for initialization
     void Start () {
         agents = FindObjectsOfType<Agent>().ToList();
         agents.OrderBy(a => a.turnPriority);

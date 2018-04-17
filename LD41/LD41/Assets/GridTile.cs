@@ -6,6 +6,15 @@ public class GridTile : MonoBehaviour {
 	GridObject inhabitant {get; set;}
 	private bool accessible = false;
 
+	private Vector3 Center() {
+		return GetComponent<Transform>().position;
+	}
+
+	public void Populate(GridObject obj) {
+		inhabitant = obj;
+		inhabitant.GetComponent<Transform>().position = this.Center();
+	}
+
 	public void ToggleAccessibility() {
 		if (!this.accessible) {
 			this.accessible = true;
@@ -14,8 +23,5 @@ public class GridTile : MonoBehaviour {
 	}
 	
 	void Start() {
-		if (this.accessible) {
-			GetComponent<SpriteRenderer>().color = Color.red;
-		}
 	}
 }
