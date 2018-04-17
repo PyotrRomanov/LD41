@@ -2,19 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridData : MonoBehaviour {
+public class GridData {
 
-	const int gridSizeX = 4;
-	const int gridSizeY = 4;
+	public const int gridSizeX = 4;
+	public const int gridSizeY = 4;
 
     public Tile[,] tiles { get; private set; }
 
-    // Use this for initialization
     public GridData () {
 		tiles = new Tile[gridSizeX, gridSizeY];
 		for (int i = 0; i < gridSizeX; i++) {
 			for (int j = 0; j < gridSizeY; j++) {
 				tiles[i, j] = new Tile();
+				if (i % 2 != j % 2) {
+					tiles[i, j].SetAccessible(false);
+				}
 			}
 		}
 	}
@@ -43,7 +45,7 @@ public class Tile {
 		this.inhabitant = null;
 	}
 
-	public bool GetAccessible() {
+	public bool Accessible() {
 		return this.accessible;
 	}
 	public void SetAccessible(bool accessible) {
