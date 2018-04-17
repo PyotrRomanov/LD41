@@ -6,7 +6,7 @@ public class Agent : GridObject {
     public int turnPriority { get; private set; }
     TurnController turnController;
     bool myTurn = false;
-
+    
 	// Use this for initialization
 	void Start () {
         turnController = FindObjectOfType<TurnController>();
@@ -14,7 +14,7 @@ public class Agent : GridObject {
 	
 	// Update is called once per frame
 	void Update () {
-        
+
     }
 
     public void TakeTurn() {

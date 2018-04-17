@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WorldManager : MonoBehaviour {
 
+<<<<<<< HEAD
 	private QuadTree worldTree;
 	int world_identifier = 0;
 	void Start () {
@@ -22,6 +24,30 @@ public class WorldManager : MonoBehaviour {
 
 	void Update() {
 	}
+=======
+    public GameObject buttonPf;
+    public GameObject canvasPf;
+    const int buttonCount = 4;
+
+	void Start () {
+		GridWorld world1 = new GridWorld(4, 4);
+
+        CreateUI();
+        
+    }
+
+    void CreateUI() {
+        GameObject canvas = Instantiate(canvasPf);
+
+        for (int i = 0; i < buttonCount; i++) {
+            GameObject button = Instantiate(buttonPf);
+            button.transform.SetParent(canvas.transform, false);
+            button.transform.localPosition = new Vector3(-(Screen.width / 2) + (button.GetComponent<RectTransform>().sizeDelta.x / 2)
+                + button.GetComponent<RectTransform>().sizeDelta.x * i
+                , -(Screen.height / 2) + (button.GetComponent<RectTransform>().sizeDelta.y / 2), 0);
+        }
+    }
+>>>>>>> 44167bc73636cf0f0a6e1c68e2d31c4776a897c5
 }
 
 public class World {
